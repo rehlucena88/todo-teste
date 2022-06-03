@@ -7,7 +7,7 @@ export function Form({onSuccess}) {
   const onSubmit = (ev) =>{
     ev.preventDefault()
     if(state){
-      onSuccess({id:Math.random(), text: state})
+      onSuccess(state)
       setState('')
     }
    

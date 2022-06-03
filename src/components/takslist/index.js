@@ -1,13 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-
-export function TasksList({tasks}) {
+export function TaskItem({id, title, onRemove}){
+  const onClick =() => onRemove(id)
+  return(
+    <li>
+      <span>{title}</span>
+      <button onClick={onClick}>Remover</button>
+    </li>
+  )
+}
+export function TasksList({tasks, onRemove}) {
   return (
     <section>
       <h2>Tarefas</h2>
-      <ul>
+      <ul id='tasks'>
        {tasks.map((item, index)=>(
-        <li key={item.id}>{item.text}</li>
+        <TaskItem key={item.id} {...item} onRemove={onRemove}/>
       ) )}
       </ul>
     </section>
